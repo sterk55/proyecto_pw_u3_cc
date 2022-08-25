@@ -1,5 +1,6 @@
 package com.example.demo.uce.repository.modelo;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -12,23 +13,32 @@ import javax.persistence.Table;
 public class Estudiante {
 	
 	@Id
-	@Column(name = "empl_id")
+	@Column(name = "est_id")
 	private Integer id;
 	
-	@Column(name = "empl_nombre")
+	@Column(name = "est_nombre")
 	private String nombre;
 	
-	@Column(name = "empl_apellido")
+	@Column(name = "est_apellido")
 	private String apellido;
 	
-	@Column(name = "empl_fecha_nacimiento")
+	@Column(name = "est_fecha_nacimiento")
 	private LocalDateTime fechaNacimiento;
 
-
+	@Column(name = "est_creditos")
+	private Integer creditos; 
 
 	
 	//SET y GET
 	
+	public Integer getCreditos() {
+		return creditos;
+	}
+
+	public void setCreditos(Integer creditos) {
+		this.creditos = creditos;
+	}
+
 	
 	public Integer getId() {
 		return id;

@@ -1,7 +1,10 @@
 package com.example.demo.uce.repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -40,6 +43,13 @@ public class EstudianteRepositoryImpl implements IEstudianteRepository{
 		// TODO Auto-generated method stub
 		return this.entityManager.find(Estudiante.class, id);
 		
+	}
+
+	@Override
+	public List<Estudiante> buscarCreditos(Integer creditos) {
+		TypedQuery<Estudiante> myQuery = this.entityManager.createQuery("SELECT e FROM Estudiante e WHERE e.creditos >: creditosDato", Estudiante.class);
+		myQuery.setParameter("creditosDato", creditos);
+		return myQuery.getResultList();
 	}
 
 }
