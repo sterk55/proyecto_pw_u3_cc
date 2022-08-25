@@ -15,7 +15,7 @@ import com.example.demo.uce.repository.modelo.Estudiante;
 import com.example.demo.uce.service.IEstudianteService;
 
 @RestController
-@RequestMapping("/APINomina/V1/estudiantes")
+@RequestMapping("/estudiantes")
 public class EstudianteRestFulController {
 
 	@Autowired
