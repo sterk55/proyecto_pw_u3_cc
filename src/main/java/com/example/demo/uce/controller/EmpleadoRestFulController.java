@@ -6,6 +6,7 @@ import java.util.List;
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,7 +47,7 @@ public class EmpleadoRestFulController {
 		return "Empleado Actualizado";
 	}
 	
-	@GetMapping(path = "/{idEmpleado}")
+	@GetMapping(path = "/{idEmpleado}",  produces = MediaType.APPLICATION_XML_VALUE )
 	public ResponseEntity<Empleado> buscarEmpleado(@PathVariable("idEmpleado") Integer id) {
 		
 		Empleado empl = this.empleadoService.buscarPorId(id);
