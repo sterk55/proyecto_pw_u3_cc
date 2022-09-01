@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.uce.repository.modelo.Empleado;
+import com.example.demo.uce.repository.modelo.Hijo;
 
 @Repository
 @Transactional
@@ -57,6 +58,18 @@ public class EmpleadoRepositoryImpl implements IEmpleadoRepository{
 		return myQuery.getResultList();
 	}
 
+	@Override
+	public List<Empleado> buscarTodos() {
+TypedQuery<Empleado> myQuery = this.entityManager.createQuery("SELECT e FROM", Empleado.class);
+
+return myQuery.getResultList();
+	}
+
+	public List<Hijo> buscarHijosEmpleado(Integer id) {
+TypedQuery<Hijo> myQuery = this.entityManager.createQuery("SELECT e FROM Hijo h WHERE h.empleado.id", Hijo.class);
+myQuery.setParameter("id", id);
+return myQuery.getResultList();
+	}
 	
 
 

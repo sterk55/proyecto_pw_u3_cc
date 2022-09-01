@@ -1,54 +1,64 @@
 package com.example.demo.uce.repository.modelo;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name = "empleado")
-public class Empleado {
-	
+@Table(name = "hijo")
+public class Hijo {
 	@Id
-	@Column(name = "empl_id")
+	@Column(name = "hijo_id")
 	private Integer id;
 	
-	@Column(name = "empl_nombre")
+	@Column(name = "hijo_nombre")
 	private String nombre;
 	
-	@Column(name = "empl_apellido")
+	@Column(name = "hijo_apellido")
 	private String apellido;
 	
-	@Column(name = "empl_fecha_nacimiento")
+	@Column(name = "hijo_fecha_nacimiento")
 	private LocalDateTime fechaNacimiento;
 
-	@Column(name = "empl_salario")
-	private BigDecimal salario;
+	@Column(name = "hijo_genero")
+	private String genero; 
 	
+	@ManyToOne
+	@JoinColumn(name = "hijo_id_empleado")
+	private Empleado empleado;
 	
-	@OneToMany(mappedBy = "empleado")
-	private List<Hijo> hijos;
+
 	
 	//SET y GET
 	
 	
 	
 	
+	public String getGenero() {
+		return genero;
+	}
+
+	public Empleado getEmpleado() {
+		return empleado;
+	}
+
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+	
 	public Integer getId() {
 		return id;
-	}
-
-	public List<Hijo> getHijos() {
-		return hijos;
-	}
-
-	public void setHijos(List<Hijo> hijos) {
-		this.hijos = hijos;
 	}
 
 	public void setId(Integer id) {
@@ -79,13 +89,6 @@ public class Empleado {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	public BigDecimal getSalario() {
-		return salario;
-	}
-
-	public void setSalario(BigDecimal salario) {
-		this.salario = salario;
-	}
 	
 	
 	
