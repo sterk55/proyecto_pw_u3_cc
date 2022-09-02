@@ -23,45 +23,40 @@ public class EstudianteRestFulController {
 
 	@Autowired
 	private IEstudianteService estudianteService;
-	
+
 	@PostMapping
 	public String crear(@RequestBody Estudiante estudiante) {
-		String mensaje = "Estudiante creado correctamente";
+		String mensaje = "Estudiante insertado correctamente";
 		try {
 			this.estudianteService.crear(estudiante);
 		} catch (Exception e) {
-			mensaje = "Error Intente mas tarde";		
-			}
-		
-		
+			mensaje = "Error intente de nuevo";
+		}
+
 		return mensaje;
-		
 	}
-	
+
 	@PutMapping
 	public String actualizar(@RequestBody Estudiante estudiante) {
 		this.estudianteService.actualizar(estudiante);
-		return "Empleado Actualizado";
+		return "Estudiante Actualizado";
 	}
-	
+
 	@GetMapping(path = "/{idEstudiante}")
 	public ResponseEntity<Estudiante> buscarEstudiante(@PathVariable("idEstudiante") Integer id) {
-		
-		Estudiante empl = this.estudianteService.buscarPorId(id);
-		
-		return ResponseEntity.ok(empl);
-		
-		
+		Estudiante est = this.estudianteService.buscarPorId(id);
+		return ResponseEntity.ok(est);
 	}
-	
-	@DeleteMapping(path = "/{idEstudiante}")
+
+	@DeleteMapping(path = "{idEstudiante}")
 	public String eliminar(@PathVariable("idEstudiante") Integer id) {
 		this.estudianteService.eliminar(id);
-		return "Se ha eliminado";
+		return "Estudiante eliminado";
 	}
 	
 	@GetMapping
-	public List<Estudiante> buscarCreditos(@RequestParam(value = "creditos") Integer creditos){
-		return this.estudianteService.buscarCreditos(creditos);
+	public List<Estudiante> buscarPorSemestre(@RequestParam(value = "semestre") Integer semestre) {
+		return this.estudianteService.buscarPorSemestre(semestre);
 	}
+
 }

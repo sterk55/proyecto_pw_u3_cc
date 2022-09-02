@@ -10,67 +10,72 @@ import org.springframework.hateoas.RepresentationModel;
 import com.example.demo.uce.repository.modelo.Hijo;
 
 public class EmpleadoTo extends RepresentationModel<EmpleadoTo> implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5111687043345548133L;
+
 	private Integer id;
-	
 
 	private String nombre;
-	
+
 	private String apellido;
-	
+
 	private LocalDateTime fechaNacimiento;
 
 	private BigDecimal salario;
 	
-		private List<Hijo> hijos;
+	private List<Hijo> hijos;
 
-		public Integer getId() {
-			return id;
-		}
+	public Integer getId() {
+		return id;
+	}
 
-		public void setId(Integer id) {
-			this.id = id;
-		}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-		public String getNombre() {
-			return nombre;
-		}
+	public String getNombre() {
+		return nombre;
+	}
 
-		public void setNombre(String nombre) {
-			this.nombre = nombre;
-		}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-		public String getApellido() {
-			return apellido;
-		}
+	public String getApellido() {
+		return apellido;
+	}
 
-		public void setApellido(String apellido) {
-			this.apellido = apellido;
-		}
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
 
-		public LocalDateTime getFechaNacimiento() {
-			return fechaNacimiento;
-		}
+	public LocalDateTime getFechaNacimiento() {
+		return fechaNacimiento;
+	}
 
-		public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
-			this.fechaNacimiento = fechaNacimiento;
-		}
+	public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
 
-		public BigDecimal getSalario() {
-			return salario;
-		}
+	public BigDecimal getSalario() {
+		return salario;
+	}
 
-		public void setSalario(BigDecimal salario) {
-			this.salario = salario;
-		}
+	public void setSalario(BigDecimal salario) {
+		this.salario = salario;
+	}
 
-		public List<Hijo> getHijos() {
-			return hijos;
-		}
+	public List<Hijo> getHijos() {
+		return hijos;
+	}
 
-		public void setHijos(List<Hijo> hijos) {
-			this.hijos = hijos;
-		}
-		
-		
-		
+	public void setHijos(List<Hijo> hijos) {
+		this.hijos = hijos;
+	}
+	
+	
+	
 }

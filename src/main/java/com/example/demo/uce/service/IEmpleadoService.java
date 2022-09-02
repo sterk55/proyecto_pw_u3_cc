@@ -9,11 +9,15 @@ import com.example.demo.uce.service.to.EmpleadoTo;
 public interface IEmpleadoService {
 
 	public void crear(Empleado empleado);
-	public void actualizar(Empleado empleado);
-	public void eliminar(Integer id);
-	public Empleado buscarPorId(Integer id);
-	public List<Empleado> buscarSalario(BigDecimal salario);
-	public List<EmpleadoTo> buscarTodos();
 
+	public void actualizar(Empleado empleado);
+
+	public void eliminar(Integer id);
+	
+	public Empleado buscarPorId(Integer id);
+	
+	public List<Empleado> buscarPorSalario(BigDecimal salario);
+	
+	public List<EmpleadoTo> buscarTodos();
 	
 }

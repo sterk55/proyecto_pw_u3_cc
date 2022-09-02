@@ -11,68 +11,51 @@ import com.example.demo.uce.repository.IEmpleadoRepository;
 import com.example.demo.uce.repository.modelo.Empleado;
 import com.example.demo.uce.service.to.EmpleadoTo;
 
-
 @Service
-public class EmpleadoServiceImpl implements IEmpleadoService{
+public class EmpleadoServiceImpl implements IEmpleadoService {
 
 	@Autowired
-	private  IEmpleadoRepository empleadoRepository;
-	
-	
-	
-	
-	
+	private IEmpleadoRepository empleadoRepository;
+
 	@Override
 	public void crear(Empleado empleado) {
-		// TODO Auto-generated method stub
 		this.empleadoRepository.crear(empleado);
-
 	}
 
 	@Override
 	public void actualizar(Empleado empleado) {
-		// TODO Auto-generated method stub
 		this.empleadoRepository.actualizar(empleado);
-
 	}
 
 	@Override
 	public void eliminar(Integer id) {
-		// TODO Auto-generated method stub
 		this.empleadoRepository.eliminar(id);
-
 	}
 
 	@Override
 	public Empleado buscarPorId(Integer id) {
-		// TODO Auto-generated method stub
 		return this.empleadoRepository.buscar(id);
 	}
 
 	@Override
-	public List<Empleado> buscarSalario(BigDecimal salario) {
-		// TODO Auto-generated method stub
-		return this.empleadoRepository.buscarSalario(salario);
+	public List<Empleado> buscarPorSalario(BigDecimal salario){
+		return this.empleadoRepository.buscarPorSalario(salario);
 	}
 
 	@Override
 	public List<EmpleadoTo> buscarTodos() {
-
 		List<Empleado> lista = this.empleadoRepository.buscarTodos();
-		List<EmpleadoTo> listaFinal = lista.stream().map(empleado -> this.convertir(empleado)).collect(Collectors.toList());
-		
-		return listaFinal;
+		return lista.stream().map(empleado -> this.convertirEmpleadoTo(empleado))
+		.collect(Collectors.toList());
 	}
 	
-	private EmpleadoTo convertir(Empleado e) {
-		
-		EmpleadoTo empl = new EmpleadoTo();
-		empl.setId(e.getId());
-		empl.setNombre(e.getNombre());
-		empl.setApellido(e.getApellido());
-		empl.setFechaNacimiento(e.getFechaNacimiento());
-		return empl;
-		
-		
+	private EmpleadoTo convertirEmpleadoTo(Empleado empleado){
+		EmpleadoTo aux = new EmpleadoTo();
+		aux.setId(empleado.getId());
+		aux.setNombre(empleado.getNombre());
+		aux.setApellido(empleado.getApellido());
+		aux.setFechaNacimiento(empleado.getFechaNacimiento());
+		aux.setSalario(empleado.getSalario());
+		return aux;
 	}
 }

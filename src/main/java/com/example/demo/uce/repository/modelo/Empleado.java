@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -13,30 +14,28 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "empleado")
 public class Empleado {
-	
+
 	@Id
 	@Column(name = "empl_id")
 	private Integer id;
-	
+
 	@Column(name = "empl_nombre")
 	private String nombre;
-	
+
 	@Column(name = "empl_apellido")
 	private String apellido;
-	
+
 	@Column(name = "empl_fecha_nacimiento")
 	private LocalDateTime fechaNacimiento;
 
 	@Column(name = "empl_salario")
 	private BigDecimal salario;
 	
-	
-	@OneToMany(mappedBy = "empleado")
+	@OneToMany(mappedBy = "empleado", fetch = FetchType.EAGER)
 	private List<Hijo> hijos;
-	
-	//SET y GET
-	
-	
+
+	// SET Y GET
+
 	
 	
 	public Integer getId() {
@@ -86,13 +85,5 @@ public class Empleado {
 	public void setSalario(BigDecimal salario) {
 		this.salario = salario;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
